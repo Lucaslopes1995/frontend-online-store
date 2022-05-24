@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import ShoppingCart from './pages/ShoppingCart';
 
 class App extends React.Component {
   constructor() {
@@ -11,7 +12,10 @@ class App extends React.Component {
 
   renderRouter() {
     return (
-      <Route exact path="/" component={ Home } />
+      <>
+        <Route exact path="/" component={ Home } />
+        <Route path="/cart" component={ ShoppingCart } />
+      </>
     );
   }
 
