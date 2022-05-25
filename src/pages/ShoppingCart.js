@@ -1,4 +1,5 @@
 import React from 'react';
+
 class ShoppingCart extends React.Component {
   constructor() {
     super();
@@ -6,6 +7,7 @@ class ShoppingCart extends React.Component {
       listCart: [],
     };
   }
+  
   componentDidMount = () => {
     let getFavorites = JSON.parse(localStorage.getItem('productCart'));
     const ajusteFav = getFavorites || [];
@@ -21,6 +23,7 @@ class ShoppingCart extends React.Component {
       return favorite;
     });
   }
+  
   render() {
     const { listCart } = this.state;
     const validListCart = (listCart.length === 0);
