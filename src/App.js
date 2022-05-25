@@ -10,7 +10,7 @@ class App extends React.Component {
     super();
     this.renderRouter = this.renderRouter.bind(this);
   }
-  
+
   renderRouter() {
     return (
       <>
@@ -20,7 +20,7 @@ class App extends React.Component {
       </>
     );
   }
-  
+
   render() {
     return (
       <BrowserRouter>
