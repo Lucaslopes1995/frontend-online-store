@@ -4,11 +4,13 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
 import ProductInfo from './pages/ProductInfo';
+
 class App extends React.Component {
   constructor() {
     super();
     this.renderRouter = this.renderRouter.bind(this);
   }
+  
   renderRouter() {
     return (
       <>
@@ -18,6 +20,7 @@ class App extends React.Component {
       </>
     );
   }
+  
   render() {
     return (
       <BrowserRouter>
