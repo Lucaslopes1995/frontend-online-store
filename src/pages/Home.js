@@ -12,6 +12,7 @@ class Home extends React.Component {
       selectedRadio: '',
       filteredProducts: [],
       cartProducts: [],
+      totalCart: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeRadio = this.handleChangeRadio.bind(this);
@@ -19,6 +20,13 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    const getFavorites = JSON.parse(localStorage.getItem('productCart')) || [];
+
+    const total = getFavorites.reduce((ant, at) => ant + at.tamanho, 0);
+
+    const ajusteFav = getFavorites || [];
+    this.setState({ cartProducts: ajusteFav, totalCart: total });
+
     this.setCategories();
   }
 
@@ -50,15 +58,42 @@ class Home extends React.Component {
 
   addToCart = (product) => {
     const { cartProducts } = this.state;
-    this.setState({ cartProducts: [...cartProducts, product] }, () => {
-      const { cartProducts: Carrinho } = this.state;
-      localStorage.setItem('productCart', JSON.stringify(Carrinho));
+    if (cartProducts.find((el) => el.id === product.id) === undefined) {
+      product.tamanho = 1;
+      this.setState({ cartProducts: [...cartProducts, product] }, () => {
+        const { cartProducts: Carrinho } = this.state;
+        localStorage.setItem('productCart', JSON.stringify(Carrinho));
+      });
+    } else {
+      let index;
+      [...cartProducts].find((el, i) => {
+        if (el.id === product.id) {
+          index = i;
+          return true;
+        }
+        return false;
+      });
+
+      cartProducts[index].tamanho += 1;
+      this.setState({ cartProducts }, () => {
+        const { cartProducts: Carrinho } = this.state;
+        localStorage.setItem('productCart', JSON.stringify(Carrinho));
+      });
+      if (product.available_quantity === product.tamanho - 1) {
+        product.tamanho = product.available_quantity;
+      }
+    }
+
+    this.setState((state) => {
+      const { cartProducts: cartAtualizado } = state;
+      const total = cartAtualizado.reduce((ant, at) => ant + at.tamanho, 0);
+      return { totalCart: total };
     });
   }
 
   render() {
     const { inputValue, listProducts, listCategories, selectedRadio,
-      filteredProducts } = this.state;
+      filteredProducts, totalCart } = this.state;
     const { history } = this.props;
     const validListProducts = (listProducts.length === 0);
     return (
@@ -108,6 +143,8 @@ class Home extends React.Component {
               data-testid="product"
               key={ cada.title }
             >
+              {cada.shipping.free_shipping && (
+                <p data-testid="free-shipping">Frete Grátis</p>)}
               <p>{cada.title}</p>
               <p>{cada.price}</p>
               <button
@@ -127,6 +164,7 @@ class Home extends React.Component {
               </button>
             </div>
           ))}
+          <h2 data-testid="shopping-cart-size">{totalCart}</h2>
         </div>
       </div>
     );
