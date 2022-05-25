@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
+import ProductInfo from './pages/ProductInfo';
 
 class App extends React.Component {
   constructor() {
@@ -15,6 +16,7 @@ class App extends React.Component {
       <>
         <Route exact path="/" component={ Home } />
         <Route path="/cart" component={ ShoppingCart } />
+        <Route path="/product/:id" component={ ProductInfo } />
       </>
     );
   }
@@ -29,5 +31,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
