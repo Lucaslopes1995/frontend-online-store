@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getCategories, getProductsByNameAndCategory } from '../services/api';
+
 class Home extends React.Component {
   constructor() {
     super();
@@ -16,18 +17,22 @@ class Home extends React.Component {
     this.handleChangeRadio = this.handleChangeRadio.bind(this);
     this.setCategories = this.setCategories.bind(this);
   }
+  
   componentDidMount() {
     this.setCategories();
   }
+  
   handleChange({ target }) {
     const { name, value } = target;
     this.setState(() => ({ [name]: value }));
   }
+  
   handleChangeRadio(el) {
     this.setState({ selectedRadio: el.id }, async () => {
       this.handleButton();
     });
   }
+  
   handleButton = async () => {
     const { inputValue, selectedRadio } = this.state;
     if (inputValue !== '' || selectedRadio !== '') {
@@ -36,11 +41,13 @@ class Home extends React.Component {
       this.setState({ filteredProducts: productsByNameAndCategory });
     }
   }
+  
   async setCategories() {
     /* console.log(await getProductsByNameAndCategory('Agro', '')); */
     const categories = (await getCategories());
     this.setState({ listCategories: categories });
   }
+  
   addToCart = (product) => {
     const { cartProducts } = this.state;
     this.setState({ cartProducts: [...cartProducts, product] }, () => {
@@ -48,6 +55,7 @@ class Home extends React.Component {
       localStorage.setItem('productCart', JSON.stringify(Carrinho));
     });
   }
+  
   render() {
     const { inputValue, listProducts, listCategories, selectedRadio,
       filteredProducts } = this.state;
@@ -127,4 +135,5 @@ class Home extends React.Component {
 Home.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
 };
+
 export default Home;
