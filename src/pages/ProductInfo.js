@@ -189,7 +189,7 @@ class ProductInfo extends React.Component {
 
           <button
           className='go-cart'
-            onClick={ () => history.push('/cart') }
+            onClick={ () => history.push('/frontend-online-store/cart') }
             type="button"
             data-testid="shopping-cart-button"
           >
