@@ -1,10 +1,10 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import './ModalCategories.css'
 
 class ModalCart extends React.Component{
     render(){
-        const {listCategories, selectedRadio, handleChangeRadio, showCategories} = this.props
+        const {listCategories, selectedRadio, handleChangeRadio} = this.props
+        // const {showCategories} =this.props
         return(
            <aside>
                {listCategories.map((el) => (

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import logo from '../images/mercadoLivre.png'
-import lupa from '../images/lupa.png'
+// import lupa from '../images/lupa.png'
 import menu from '../images/menu.png'
 import carrinho from '../images/carrinho.png'
 import './Header.css'

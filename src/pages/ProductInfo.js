@@ -152,7 +152,8 @@ class ProductInfo extends React.Component {
   }
 
   render() {
-    const { location: { state: infos }, history } = this.props;
+    // const { location: { state: infos }, history } = this.props;
+    const {history} = this.props;
     const { product, checkbox0, checkbox1, checkbox2,
       checkbox3, checkbox4, showReview, email, obs, allreviews } = this.state;
     const { totalCart } = this.state;

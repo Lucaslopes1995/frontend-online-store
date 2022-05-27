@@ -180,7 +180,8 @@ class Home extends React.Component {
 
   render() {
     const { inputValue, listProducts, listCategories, selectedRadio,
-      filteredProducts, totalCart, APIAwait, selectedFilter, showCategories, showCart, showFilter, filterFrete  } = this.state;
+      filteredProducts, totalCart, APIAwait, selectedFilter, showCategories, showCart, showFilter  } = this.state;
+      // const {filterFrete} = this.state;
     const { history } = this.props;
     const validListProducts = (listProducts.length === 0);
     return (
