@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from '../components/Header';
+import './CheckOut.css'
 
 class CheckOut extends React.Component {
     state = {
@@ -16,9 +18,12 @@ class CheckOut extends React.Component {
 
       render() {
         const { name, email, cpf, phone, cep, address } = this.state;
+        const { history } = this.props;
         return (
-          <div>
-            <form>
+          <div className='checkout-page'>
+            <Header history= { history } />
+            <div className='content-checkout-page'>
+            <form className='form-checkout-page'>
               <label htmlFor="nome">
                 Nome
                 <input
@@ -95,6 +100,7 @@ class CheckOut extends React.Component {
                 />
               </label>
             </form>
+          </div>
           </div>
         );
       }

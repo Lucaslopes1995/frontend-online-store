@@ -1,0 +1,30 @@
+.checkout-page{
+    background-color: gray;
+}
+
+.content-checkout-page{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.content-checkout-page form{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.content-checkout-page label{
+    margin: 10px;
+    width: 120px;
+}
+
+.content-checkout-page input{
+    width: 120px;
+    margin-top: 5px;
+    padding: 2px;
+}
+

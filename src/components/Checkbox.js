@@ -13,11 +13,11 @@ class ShoppingCart extends React.Component {
       const { dti, ch, oc, d } = this.props;
       return (
         <input
-          data-testid={ dti }
+          id={ dti }
           checked={ ch }
           onChange={ () => oc(this.getNumber()) }
           type="checkbox"
-          d={ d === 's' }
+          disabled={ d === 's' }
         />
       );
     }

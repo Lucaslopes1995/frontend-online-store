@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '../components/Checkbox';
+import Header from '../components/Header';
+import './ProductInfo.css'
+import star from '../images/estrela.png'
+import starVazia from '../images/estrela-vazia.svg'
 
 const VERIFICA_CHECKBOX = { 3: 3, 4: 4 };
 const DECREASE_PRODUCT = -1;
@@ -18,6 +22,7 @@ class ProductInfo extends React.Component {
     email: '',
     obs: '',
     totalCart: 0,
+    allreviews:[]
 
   }
 
@@ -29,13 +34,15 @@ class ProductInfo extends React.Component {
 
     const getReview = JSON.parse(localStorage.getItem('review')) || [];
 
-    getReview.find((el) => {
+    const filteredReview = getReview.filter((el) => {
       if (el.id === infos.id) {
         infos.review = el;
         return true;
       }
       return false;
     });
+
+    this.setState({allreviews:filteredReview})
 
     const verificaQtd = ajusteFav.find((el) => {
       if (el.id === infos.id) {
@@ -108,14 +115,25 @@ class ProductInfo extends React.Component {
   }
 
   handlesubmit = (e) => {
+    const { location: { state: infos } } = this.props;
     const { cartProducts, product,
       checkbox0, checkbox1, checkbox2, checkbox3, checkbox4, email, obs } = this.state;
 
     let getReview = JSON.parse(localStorage.getItem('review')) || [];
     const aux1 = { checkbox0, checkbox1, checkbox2, checkbox3, checkbox4 };
 
+    
+
     getReview = [...getReview,
       { id: product.id, ...aux1, email, obs }];
+
+    const filteredReview = getReview.filter((el) => {
+      if (el.id === infos.id) {
+        infos.review = el;
+        return true;
+      }
+      return false;
+    });
 
     const a = [...cartProducts];
     a.forEach((el) => {
@@ -127,8 +145,8 @@ class ProductInfo extends React.Component {
     e.preventDefault();
     product.review = (
       { product, checkbox0, checkbox1, checkbox2, checkbox3, checkbox4, email, obs });
-    this.setState(() => this.setState({ product, email: '', obs: '' }),
-      () => this.setState({ showReview: true }));
+    this.setState(() => this.setState({ product, email: '', obs: '',checkbox0:false, checkbox1:false, checkbox2:false, checkbox3:false, checkbox4:false }),
+      () => this.setState({ showReview: true, allreviews:filteredReview }));
 
     localStorage.setItem('review', JSON.stringify(getReview));
   }
@@ -136,46 +154,41 @@ class ProductInfo extends React.Component {
   render() {
     const { location: { state: infos }, history } = this.props;
     const { product, checkbox0, checkbox1, checkbox2,
-      checkbox3, checkbox4, showReview, email, obs } = this.state;
+      checkbox3, checkbox4, showReview, email, obs, allreviews } = this.state;
     const { totalCart } = this.state;
-    const { checkbox0: rv0, checkbox1: rv1,
-      checkbox2: rv2, checkbox3: rv3, checkbox4: rv4,
-      email: emailReview, obs: obsReview } = product.review || product;
 
     return (
-      <div>
-        <form onSubmit={ this.handlesubmit }>
-          <p data-testid="product-detail-name">{product.title}</p>
-          <input
-            data-testid="product-detail-email"
-            name="email"
-            type="email"
-            value={ email }
-            onChange={ (e) => this.handleInput(e) }
-          />
+      <div className='page-product-info'>
+        <Header history={history}/>
+        <div className='product-info'>
+        <div className='carac-product'>
+          <p className="product-detail-name">{product.title}</p>
+          <img src={product.thumbnail} alt={product.title}/>
 
-          <Checkbox dti="1-rating" ch={ checkbox0 } oc={ this.validCheckbox } d="n" />
-          <Checkbox dti="2-rating" ch={ checkbox1 } oc={ this.validCheckbox } d="n" />
-          <Checkbox dti="3-rating" ch={ checkbox2 } oc={ this.validCheckbox } d="n" />
-          <Checkbox dti="4-rating" ch={ checkbox3 } oc={ this.validCheckbox } d="n" />
-          <Checkbox dti="5-rating" ch={ checkbox4 } oc={ this.validCheckbox } d="n" />
-          <button type="submit" data-testid="submit-review-btn">Enviar Avaliação</button>
-          <textarea
-            name="obs"
-            value={ obs }
-            data-testid="product-detail-evaluation"
-            onChange={ (e) => this.handleInput(e) }
-          />
+          <p className="details-price">R$ {product.price?.toLocaleString('pt-BR')}</p>
 
+          <p>Quantidade</p>
           <button
+          className='button-inc-dec'
             type="button"
-            data-testid="product-detail-add-to-cart"
-            onClick={ () => this.addToCart(infos, 1) }
+            data-testid="product-increase-quantity"
+            onClick={ () => this.addToCart(1) }
+            disabled={product.available_quantity === product.tamanho}
           >
-            Adicionar ao carrinho
+            +
+          </button>
+          <p data-testid="product-detail-quantidade">{product.tamanho}</p>
+          <button
+          className='button-inc-dec'
+            type="button"
+            data-testid="product-decrease-quantity"
+            onClick={ () => this.addToCart(DECREASE_PRODUCT) }
+          >
+            -
           </button>
 
           <button
+          className='go-cart'
             onClick={ () => history.push('/cart') }
             type="button"
             data-testid="shopping-cart-button"
@@ -184,39 +197,105 @@ class ProductInfo extends React.Component {
 
           </button>
 
-          <p>Quantidade</p>
-          <button
-            type="button"
-            data-testid="product-increase-quantity"
-            onClick={ () => this.addToCart(1) }
-          >
-            +
-          </button>
-          <p data-testid="product-detail-quantidade">{product.tamanho}</p>
-          <button
-            type="button"
-            data-testid="product-decrease-quantity"
-            onClick={ () => this.addToCart(DECREASE_PRODUCT) }
-          >
-            -
-          </button>
+          <h2 data-testid="shopping-cart-size">{'Quantidade total de produtos no Carrinho: ' +totalCart}</h2>
+
+
+        </div>
+        
+        <hr/>
+        <form onSubmit={ this.handlesubmit } className='form-avaliation'>
+          <h3>Deixe sua Avaliação do Produto</h3>
+          <input
+            placeholder='email'
+            data-testid="product-detail-email"
+            name="email"
+            type="email"
+            value={ email }
+            onChange={ (e) => this.handleInput(e) }
+            autocomplete='off'
+          />
+          <div className='all-stars'>
+          <label htmlFor='1-rating' className='label-stars-sending'>
+            <Checkbox dti="1-rating" ch={ checkbox0 } oc={ this.validCheckbox } d="n" />
+            <img src={checkbox0 ? star :starVazia} alt='star' />
+          </label>
+          <label htmlFor='2-rating' className='label-stars-sending'>
+
+            <Checkbox dti="2-rating" ch={ checkbox1 } oc={ this.validCheckbox } d="n" />
+            <img src={checkbox1 ? star :starVazia} alt='star' />
+          </label>
+          <label htmlFor='3-rating' className='label-stars-sending'>
+
+            <Checkbox dti="3-rating" ch={ checkbox2 } oc={ this.validCheckbox } d="n" />
+            <img src={checkbox2 ? star :starVazia} alt='star' />
+          </label>
+          <label htmlFor='4-rating' className='label-stars-sending'>
+
+            <Checkbox dti="4-rating" ch={ checkbox3 } oc={ this.validCheckbox } d="n" />
+            <img src={checkbox3 ? star :starVazia} alt='star' />
+          </label>
+          <label htmlFor='5-rating' className='label-stars-sending'>
+
+            <Checkbox dti="5-rating" ch={ checkbox4 } oc={ this.validCheckbox } d="n" />
+            <img src={checkbox4 ? star :starVazia} alt='star' />
+          </label>
+          </div>
+          
+          <textarea
+            placeholder='mensagem'
+            name="obs"
+            value={ obs }
+            data-testid="product-detail-evaluation"
+            onChange={ (e) => this.handleInput(e) }
+          />
+          <button type="submit" data-testid="submit-review-btn">Enviar Avaliação</button>
+
+          
+
+          
 
         </form>
 
-        <h2 data-testid="shopping-cart-size">{totalCart}</h2>
+       <hr/>
+        <div className='all-reviews'>
+          {showReview && (allreviews.map((el,i,arr)=> (
+            <div className='review'>
+              <p className='review-text-area'>{el.obs}</p>
+              <p>{el.email}</p>
+              <div>
 
-        {showReview && (
-          <div>
-            <p>{emailReview}</p>
-            <p>{obsReview}</p>
-            <Checkbox dti="review-1-rating" ch={ rv0 } oc={ this.validCheckbox } d="s" />
-            <Checkbox dti="review-2-rating" ch={ rv1 } oc={ this.validCheckbox } d="s" />
-            <Checkbox dti="review-3-rating" ch={ rv2 } oc={ this.validCheckbox } d="s" />
-            <Checkbox dti="review-4-rating" ch={ rv3 } oc={ this.validCheckbox } d="s" />
-            <Checkbox dti="review-5-rating" ch={ rv4 } oc={ this.validCheckbox } d="s" />
+                
+              </div>
 
-          </div>
-        )}
+              <div className='all-stars'>
+              <label htmlFor='review-1-rating' className='label-stars-sending'>
+              <Checkbox dti="review-1-rating" ch={ el.checkbox0 } oc={ this.validCheckbox } d="s" />
+              <img src={el.checkbox0 ? star :starVazia} alt='star' />
+              </label>
+              <label htmlFor='review-2-rating' className='label-stars-sending'>
+              <Checkbox dti="review-2-rating" ch={ el.checkbox1 } oc={ this.validCheckbox } d="s" />
+              <img src={el.checkbox1 ? star :starVazia} alt='star' />
+              </label>
+              <label htmlFor='review-3-rating' className='label-stars-sending'>
+              <Checkbox dti="review-3-rating" ch={ el.checkbox2 } oc={ this.validCheckbox } d="s" />
+              <img src={el.checkbox2 ? star :starVazia} alt='star' />
+              </label>
+              <label htmlFor='review-4-rating' className='label-stars-sending'>
+              <Checkbox dti="review-4-rating" ch={ el.checkbox3 } oc={ this.validCheckbox } d="s" />
+              <img src={el.checkbox3 ? star :starVazia} alt='star' />
+              </label>
+              <label htmlFor='review-5-rating' className='label-stars-sending'>
+              <Checkbox dti="review-5-rating" ch={ el.checkbox4 } oc={ this.validCheckbox } d="s" />
+              <img src={el.checkbox4 ? star :starVazia} alt='star' />
+              </label>
+              </div>
+
+              {(i!==arr.length-1) && <hr/>}
+
+            </div>))
+          )}
+        </div>
+      </div>
       </div>
     );
   }

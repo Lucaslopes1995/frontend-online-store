@@ -1,0 +1,19 @@
+.header-ot-pag{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-dm-pg{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ajusta-header{
+  display: flex;
+  margin: 5px;
+}
+.ajusta-header img{
+  margin: 0 10px 0 10px;
+}

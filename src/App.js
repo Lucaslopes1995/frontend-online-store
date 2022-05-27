@@ -15,10 +15,10 @@ class App extends React.Component {
   renderRouter() {
     return (
       <>
-        <Route exact path="/" component={ Home } />
-        <Route path="/cart" component={ ShoppingCart } />
-        <Route path="/product/:id" component={ ProductInfo } />
-        <Route path="/checkout" component={ CheckOut } />
+        <Route exact path="/frontend-online-store/" component={ Home } />
+        <Route path="/frontend-online-store/cart" component={ ShoppingCart } />
+        <Route path="/frontend-online-store/product/:id" component={ ProductInfo } />
+        <Route path="/frontend-online-store/checkout" component={ CheckOut } />
       </>
     );
   }

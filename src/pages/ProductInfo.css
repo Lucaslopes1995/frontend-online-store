@@ -1,0 +1,123 @@
+.product-info{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.carac-product{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-detail-name{
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.all-stars{
+    display: flex;
+}
+
+
+.button-inc-dec{
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+}
+.go-cart{
+  border: 1px black solid;
+  padding: 3px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+
+.label-stars-sending {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  
+  .label-stars-sending input {
+    display: none;
+  }
+  
+  .label-stars-sending img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: white;
+  
+    margin: 8px;
+  }
+  
+  .label-stars-sending input:checked + img {
+    src: '../images/coracao.png';
+  }
+  
+  
+  .label-stars-sending img:hover {
+    cursor: pointer;
+  }
+
+  .form-avaliation{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 250px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 40%);
+  }
+
+  .form-avaliation input{
+    padding: 5px;
+
+  }
+  .form-avaliation textarea{
+    padding: 3px;
+
+  }
+
+
+  .page-product-info hr{
+    width: 70%;
+    margin: 30px;
+  }
+
+
+  .all-reviews{
+    width: 300px;
+    padding: 5px;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+  }
+  .review{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .review-text-area{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
+    overflow: scroll;
+  }

@@ -1,0 +1,254 @@
+.home{
+    background-color: #ebebeb;
+}
+
+
+.backgound-modal-categories{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.component-modal{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.80) 0px 0px 9999px 700px;
+    z-index: 1;
+    background-color: white;
+
+}.component-modal button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    border: none;
+    width: 10%;
+}
+
+.component-modal aside{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+
+.backgound-modal-cart{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.component-modal-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.80) 0px 0px 9999px 700px;
+    z-index: 1;
+    background-color: white;
+
+}
+
+.component-modal div{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: scroll;
+}
+
+.modal-and-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 20px 0;
+}
+
+.loading-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+
+
+}
+
+.loading-div img{
+    align-self: center;
+    width: 100%;
+}
+.form-header{
+    max-width: 100%;
+    height: 60px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.div-logo {
+    width: 100%;
+}
+
+.div-logo img {
+    width: 60px;
+}
+
+.input-header{
+    height: 28px;
+    align-self :center ;
+    border: 0;
+    border-radius: 0px 5px 5px 0px;
+    border-color: black;
+    border-style: solid;
+}
+
+.button-lupa-header{
+    display: flex;
+    align-self: center;
+    border: 0;
+    border-radius: 5px 0px 0px 5px;
+    width: 50%;
+    height: 30px ;
+    background-color: white;
+    border: none;
+
+    border: 0;
+}
+
+.button-lupa-header img{
+    height: 100% ;
+}
+
+.div-categories{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px 0px 0px 5px;
+    width: 100%;
+    height: 30px ;
+    background-color: transparent;
+    border: none;
+
+    border: 0;
+}
+.div-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-menu img {
+    height: 100% ;
+}
+
+.div-cart {
+    display: flex;
+    align-self: center;
+    border: 0;
+    border-radius: 5px 0px 0px 5px;
+    width: 100%;
+    height: 30px ;
+    background-color: transparent;
+    border: none;
+
+    border: 0;
+}
+
+.div-cart img {
+    height: 100% ;
+}
+
+.div-cart-todo{
+    display: flex;
+    
+}
+.total-cart {
+    font-size: 12px;
+    background-color: green;
+    border-radius: 50%;
+    margin:0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1px;
+}
+
+.div-cart h4 {
+
+    margin:0
+}
+
+header{
+    background-color: #fff159;
+}
+
+.div-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-all-products{
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-img-products{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: 0;
+    border-radius: 5px 0px 0px 5px;
+    width: 100%;
+    height: 100px ;
+    background-color: transparent;
+    border: none;
+
+    border: 0;
+}
+
+.div-img-products img{
+    height: 100%;
+}
+
+.div-prices-products{
+    margin: 10px 0 10px 0;
+}
+
+.div-text-products p {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+}
+.div-text-products span{
+    color: #00a650!important;
+    font-weight: 600;
+}
