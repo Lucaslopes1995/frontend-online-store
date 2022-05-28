@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/frontend-online-store/static/css/main.239285e9.chunk.css",
+    "main.css": "/frontend-online-store/static/css/main.0f832fe3.chunk.css",
     "main.js": "/frontend-online-store/static/js/main.40ee3647.chunk.js",
     "main.js.map": "/frontend-online-store/static/js/main.40ee3647.chunk.js.map",
     "runtime-main.js": "/frontend-online-store/static/js/runtime-main.720530ed.js",
@@ -8,9 +8,9 @@
     "static/js/2.00a7fed6.chunk.js": "/frontend-online-store/static/js/2.00a7fed6.chunk.js",
     "static/js/2.00a7fed6.chunk.js.map": "/frontend-online-store/static/js/2.00a7fed6.chunk.js.map",
     "index.html": "/frontend-online-store/index.html",
-    "precache-manifest.25271e71f7a062358c0623ae67d618bc.js": "/frontend-online-store/precache-manifest.25271e71f7a062358c0623ae67d618bc.js",
+    "precache-manifest.9e6a80951957ce2f8e6345ac33ec4ec8.js": "/frontend-online-store/precache-manifest.9e6a80951957ce2f8e6345ac33ec4ec8.js",
     "service-worker.js": "/frontend-online-store/service-worker.js",
-    "static/css/main.239285e9.chunk.css.map": "/frontend-online-store/static/css/main.239285e9.chunk.css.map",
+    "static/css/main.0f832fe3.chunk.css.map": "/frontend-online-store/static/css/main.0f832fe3.chunk.css.map",
     "static/js/2.00a7fed6.chunk.js.LICENSE.txt": "/frontend-online-store/static/js/2.00a7fed6.chunk.js.LICENSE.txt",
     "static/media/carrinho.png": "/frontend-online-store/static/media/carrinho.515fc584.png",
     "static/media/estrela-vazia.svg": "/frontend-online-store/static/media/estrela-vazia.7171c521.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.720530ed.js",
     "static/js/2.00a7fed6.chunk.js",
-    "static/css/main.239285e9.chunk.css",
+    "static/css/main.0f832fe3.chunk.css",
     "static/js/main.40ee3647.chunk.js"
   ]
 }
