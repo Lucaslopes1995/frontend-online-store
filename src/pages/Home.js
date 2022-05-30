@@ -101,7 +101,7 @@ class Home extends React.Component {
       getProductsByNameAndCategory(selectedRadio, inputValue);
       const ordenProducts = this.ordenaProducts(productsByNameAndCategory)
       const fretefilter = this.filtraFrete(ordenProducts)
-      this.setState({ filteredProducts: fretefilter, APIAwait:true, showFilter:true, inputValue:''});
+      this.setState({ filteredProducts: fretefilter, APIAwait:true, showFilter:true, inputValue:'',selectedRadio:""});
     }
   }
 
@@ -120,7 +120,7 @@ class Home extends React.Component {
   filterChangeCheckbox = (e) => {
     const {target:{checked}} = e
     this.setState(()=>({filterFrete:!checked}))
-    console.log(this.state.filterFrete)
+    // console.log(this.state.filterFrete)
     if(checked===false){
       this.handleButton(e)
 
@@ -164,14 +164,14 @@ class Home extends React.Component {
   }
 
   closeModal= ({target:{className}}) => {
-    console.log(className==='backgound-modal-categories')
+    // console.log(className==='backgound-modal-categories')
     if(className==='backgound-modal-categories'){
       this.setState({showCategories:false})
     }
   }
 
   closeModalCart = ({target:{className}}) => {
-    console.log(className==='backgound-modal-cart')
+    // console.log(className==='backgound-modal-cart')
     if(className==='backgound-modal-cart'){
       this.setState({showCart:false})
     }
