@@ -92,6 +92,7 @@ class ProductInfo extends React.Component {
 
     this.setState({ cartProducts: ajustedCart }, () => {
       const { cartProducts: Carrinho } = this.state;
+      console.log("carrinho",Carrinho)
       localStorage.setItem('productCart', JSON.stringify(Carrinho));
       const total = Carrinho.reduce((ant, at) => ant + at.tamanho, 0);
       this.setState({ totalCart: total });
@@ -116,7 +117,7 @@ class ProductInfo extends React.Component {
 
   handlesubmit = (e) => {
     const { location: { state: infos } } = this.props;
-    const { cartProducts, product,
+    const { product,
       checkbox0, checkbox1, checkbox2, checkbox3, checkbox4, email, obs } = this.state;
 
     let getReview = JSON.parse(localStorage.getItem('review')) || [];
@@ -135,16 +136,16 @@ class ProductInfo extends React.Component {
       return false;
     });
 
-    const a = [...cartProducts];
-    a.forEach((el) => {
-      if (el.id === product.id) {
-        const aux = { product, checkbox0, checkbox1, checkbox2 };
-        el.review = { ...aux, checkbox3, checkbox4, email, obs };
-      }
-    });
+    // const a = [...cartProducts];
+    // a.forEach((el) => {
+    //   if (el.id === product.id) {
+    //     const aux = { product, checkbox0, checkbox1, checkbox2 };
+    //     el.review = { ...aux, checkbox3, checkbox4, email, obs };
+    //   }
+    // });
     e.preventDefault();
-    product.review = (
-      { product, checkbox0, checkbox1, checkbox2, checkbox3, checkbox4, email, obs });
+    // product.review = (
+    //   { product, checkbox0, checkbox1, checkbox2, checkbox3, checkbox4, email, obs });
     this.setState(() => this.setState({ product, email: '', obs: '',checkbox0:false, checkbox1:false, checkbox2:false, checkbox3:false, checkbox4:false }),
       () => this.setState({ showReview: true, allreviews:filteredReview }));
 
