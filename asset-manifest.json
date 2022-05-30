@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/frontend-online-store/static/css/main.0f832fe3.chunk.css",
-    "main.js": "/frontend-online-store/static/js/main.9fbe6583.chunk.js",
-    "main.js.map": "/frontend-online-store/static/js/main.9fbe6583.chunk.js.map",
+    "main.js": "/frontend-online-store/static/js/main.eead55cb.chunk.js",
+    "main.js.map": "/frontend-online-store/static/js/main.eead55cb.chunk.js.map",
     "runtime-main.js": "/frontend-online-store/static/js/runtime-main.720530ed.js",
     "runtime-main.js.map": "/frontend-online-store/static/js/runtime-main.720530ed.js.map",
-    "static/js/2.00a7fed6.chunk.js": "/frontend-online-store/static/js/2.00a7fed6.chunk.js",
-    "static/js/2.00a7fed6.chunk.js.map": "/frontend-online-store/static/js/2.00a7fed6.chunk.js.map",
+    "static/js/2.3ab4b2aa.chunk.js": "/frontend-online-store/static/js/2.3ab4b2aa.chunk.js",
+    "static/js/2.3ab4b2aa.chunk.js.map": "/frontend-online-store/static/js/2.3ab4b2aa.chunk.js.map",
     "index.html": "/frontend-online-store/index.html",
-    "precache-manifest.fc58c9683909f3619b3b6768f5157009.js": "/frontend-online-store/precache-manifest.fc58c9683909f3619b3b6768f5157009.js",
+    "precache-manifest.3355fbb61707f4e2abd22ed064e5d87d.js": "/frontend-online-store/precache-manifest.3355fbb61707f4e2abd22ed064e5d87d.js",
     "service-worker.js": "/frontend-online-store/service-worker.js",
     "static/css/main.0f832fe3.chunk.css.map": "/frontend-online-store/static/css/main.0f832fe3.chunk.css.map",
-    "static/js/2.00a7fed6.chunk.js.LICENSE.txt": "/frontend-online-store/static/js/2.00a7fed6.chunk.js.LICENSE.txt",
+    "static/js/2.3ab4b2aa.chunk.js.LICENSE.txt": "/frontend-online-store/static/js/2.3ab4b2aa.chunk.js.LICENSE.txt",
     "static/media/carrinho.png": "/frontend-online-store/static/media/carrinho.515fc584.png",
     "static/media/estrela-vazia.svg": "/frontend-online-store/static/media/estrela-vazia.7171c521.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.720530ed.js",
-    "static/js/2.00a7fed6.chunk.js",
+    "static/js/2.3ab4b2aa.chunk.js",
     "static/css/main.0f832fe3.chunk.css",
-    "static/js/main.9fbe6583.chunk.js"
+    "static/js/main.eead55cb.chunk.js"
   ]
 }
