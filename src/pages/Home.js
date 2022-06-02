@@ -93,12 +93,19 @@ class Home extends React.Component {
   }
 
   handleButton = async (e) => {
+    const {selectedFilter, filteredProducts} = this.state;
+    
     e.preventDefault();
     this.setState({APIAwait:false, showFilter:false})
     const { inputValue, selectedRadio } = this.state;
-    if (inputValue !== '' || selectedRadio !== '') {
-      const productsByNameAndCategory = await
+    if (inputValue !== '' || selectedRadio !== '' || selectedFilter) {
+
+
+      let productsByNameAndCategory = await
       getProductsByNameAndCategory(selectedRadio, inputValue);
+      if(productsByNameAndCategory.length === 0 ){
+        productsByNameAndCategory = filteredProducts;
+      }
       const ordenProducts = this.ordenaProducts(productsByNameAndCategory)
       const fretefilter = this.filtraFrete(ordenProducts)
       this.setState({ filteredProducts: fretefilter, APIAwait:true, showFilter:true, inputValue:'',selectedRadio:""});
@@ -113,8 +120,8 @@ class Home extends React.Component {
 
   filterChange = (e) => {
     const {target:{value}} = e
-    this.setState({selectedFilter:value})
-    this.handleButton(e)
+    this.setState({selectedFilter:value},() =>{this.handleButton(e,true)})
+    
   }
 
   filterChangeCheckbox = (e) => {

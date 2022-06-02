@@ -92,7 +92,7 @@ class ProductInfo extends React.Component {
 
     this.setState({ cartProducts: ajustedCart }, () => {
       const { cartProducts: Carrinho } = this.state;
-      console.log("carrinho",Carrinho)
+      // console.log("carrinho",Carrinho)
       localStorage.setItem('productCart', JSON.stringify(Carrinho));
       const total = Carrinho.reduce((ant, at) => ant + at.tamanho, 0);
       this.setState({ totalCart: total });
